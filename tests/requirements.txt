@@ -1,0 +1,12 @@
+numpy
+scipy
+pandas
+matplotlib
+rasterio
+affine
+scikit-image
+pyproj
+nbformat
+nbclient
+ipykernel
+pytest
