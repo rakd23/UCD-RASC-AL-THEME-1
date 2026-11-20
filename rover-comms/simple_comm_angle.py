@@ -38,11 +38,12 @@ def comm_angle(rover, target, terrain):
     return azimuth, elevation, clear
 
 
-# ---- Example: scout on the crater floor talking to a tower on the rim ----
-rover = (0, 0, -4000 + 0.5)          # floor at -4000 m, 0.5 m antenna
-tower = (2000, 11500, 200 + 30)      # rim at +200 m, 30 m tower
-terrain = [-4000] * 40 + [-4000 + 100 * i for i in range(43)]   # flat floor, then wall up to the rim
+# ---- Example: Explore Rover on the crater floor talking to its Dock ----
+rover = (0, 0, -4000 + 1.0)          # floor at -4000 m, 1 m antenna (placeholder)
+dock = (1500, 2000, -4000 + 1.5)     # 2.5 km away, 1.5 m antenna (placeholder)
+terrain = [-4000] * 20 + [-4000 + 3 * i for i in range(10)] + [-3970 - 3 * i for i in range(10)] + [-4000] * 21
+                                     # flat floor with a 30 m bump halfway
 
-az, el, clear = comm_angle(rover, tower, terrain)
-print(f"Point antenna: azimuth {az:.1f} deg, elevation {el:.1f} deg")
+az, el, clear = comm_angle(rover, dock, terrain)
+print(f"Point antenna: azimuth {az:.1f} deg, elevation {el:.2f} deg")
 print("Line of sight:", "CLEAR" if clear else "BLOCKED")

@@ -1,7 +1,8 @@
 """
 rover_comm_angle.py
-Antenna pointing angles and terrain line-of-sight for a small scout rover
-talking to a hub, relay beacon, or the rim tower (Lantern concept, RASC-AL 2027 Theme 1).
+Antenna pointing angles and terrain line-of-sight for the Explore Rover (ER)
+talking to its charging Dock on the crater floor (tethered crater explorer,
+RASC-AL 2027 Theme 1). Works for any two points on a LOLA map.
 
 What it computes for a link from the rover antenna (A) to a target antenna (B):
   1. Slant range                       - straight-line distance, metres
@@ -21,10 +22,10 @@ Usage
   python rover_comm_angle.py --demo                      # synthetic crater, no data needed
   python rover_comm_angle.py --dem LDEM_80S_20M.tif \
       --rover 1200 -3400 --target 5600 -900 \
-      --rover-mast 0.5 --target-mast 30 --heading 45 --freq 2.4e9 --plot link.png
+      --rover-mast 1.0 --target-mast 1.5 --heading 45 --freq 2.4e9 --plot link.png
 
-Every rover/tower number in this file (mast heights, wheelbase, frequency) is a
-placeholder for the team to replace once the scout and tower are sized.
+Every rover/Dock number in this file (antenna heights, wheelbase, frequency) is a
+placeholder for the team to replace once the ER and Dock are sized.
 """
 
 from __future__ import annotations
@@ -160,7 +161,7 @@ class LinkResult:
 
 def rover_attitude(dem, x, y, heading_deg, wheelbase=0.6, track=0.5):
     """Pitch (nose up +) and roll (right side down +) of a rover sitting on the DEM.
-    Wheelbase and track are placeholder scout dimensions in metres."""
+    Wheelbase and track are placeholder ER dimensions in metres."""
     lat, lon = stereo_to_latlon(x, y)
     e, n, u = enu_basis(float(lat), float(lon))
     psi = math.radians(heading_deg)
@@ -195,7 +196,7 @@ def body_angles(v_enu, heading_deg, pitch_deg, roll_deg):
     return pan, tilt
 
 
-def link_angles(dem, rover_xy, target_xy, rover_mast=0.5, target_mast=30.0,
+def link_angles(dem, rover_xy, target_xy, rover_mast=1.0, target_mast=1.5,
                 heading_deg=0.0, freq_hz=2.4e9, step_m=None,
                 wheelbase=0.6, track=0.5):
     """Full link analysis from a rover antenna to a target antenna."""
@@ -354,18 +355,18 @@ def synthetic_crater(center=(0.0, 10_000.0), radius=10_500.0, depth=4_000.0,
 
 def demo(plot_prefix="demo"):
     dem = synthetic_crater()
-    tower = (0.0, 10_000.0 + 10_480.0)       # on the rim crest
-    hub = (0.0 + 3_000.0, 10_000.0 - 1_400.0)  # on the floor, behind the hill
+    dock_open = (0.0 - 500.0, 10_000.0 - 2_400.0)    # on open floor
+    dock_hidden = (0.0 + 3_000.0, 10_000.0 - 1_400.0)  # on the floor, behind the hill
     rover = (-1_000.0, 10_000.0 - 400.0)
 
     print("Synthetic Shackleton-sized crater, 20 m pixels (illustrative terrain).")
-    r1 = link_angles(dem, rover, tower, rover_mast=0.5, target_mast=30.0, heading_deg=30)
-    report(r1, "Scout -> rim tower (30 m mast, placeholder)")
-    plot_profile(r1, f"{plot_prefix}_tower.png", "Scout to rim tower")
+    r1 = link_angles(dem, rover, dock_open, rover_mast=1.0, target_mast=1.5, heading_deg=30)
+    report(r1, "ER -> Dock across open floor (antenna heights are placeholders)")
+    plot_profile(r1, f"{plot_prefix}_dock_open.png", "ER to Dock, open floor")
 
-    r2 = link_angles(dem, rover, hub, rover_mast=0.5, target_mast=2.0, heading_deg=30)
-    report(r2, "Scout -> floor hub behind a 120 m hill")
-    plot_profile(r2, f"{plot_prefix}_hub.png", "Scout to floor hub")
+    r2 = link_angles(dem, rover, dock_hidden, rover_mast=1.0, target_mast=1.5, heading_deg=30)
+    report(r2, "ER -> Dock behind a 120 m hill")
+    plot_profile(r2, f"{plot_prefix}_dock_hidden.png", "ER to Dock, behind a hill")
 
 
 # ---------------------------------------------------------------------------
@@ -376,8 +377,8 @@ def main():
     ap.add_argument("--dem", help="LOLA GeoTIFF (south polar stereographic)")
     ap.add_argument("--rover", nargs=2, type=float, metavar=("X", "Y"))
     ap.add_argument("--target", nargs=2, type=float, metavar=("X", "Y"))
-    ap.add_argument("--rover-mast", type=float, default=0.5, help="m above ground (placeholder)")
-    ap.add_argument("--target-mast", type=float, default=30.0, help="m above ground (placeholder)")
+    ap.add_argument("--rover-mast", type=float, default=1.0, help="ER antenna, m above ground (placeholder)")
+    ap.add_argument("--target-mast", type=float, default=1.5, help="Dock antenna, m above ground (placeholder)")
     ap.add_argument("--heading", type=float, default=0.0, help="rover heading, deg from local north")
     ap.add_argument("--freq", type=float, default=2.4e9, help="radio frequency, Hz (placeholder)")
     ap.add_argument("--plot", help="save a terrain profile PNG here")

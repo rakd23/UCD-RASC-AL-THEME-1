@@ -2,7 +2,7 @@
 
 A terrain-hazard map of the lunar south pole built from NASA LRO LOLA laser-altimeter data. It feeds safe-route planning for the Aggie Space Initiative NASA RASC-AL 2027 Theme 1 proposal.
 
-**Status:** Milestones 1 (data exploration) and 2 (training patches) done. Milestone 3 (U-Net vs slope rule) done. Milestone 4 (Shackleton analysis for Lantern) in progress.
+**Status:** Milestones 1 (data exploration), 2 (training patches) and 3 (U-Net vs slope rule) done. Milestone 4 (Shackleton analysis for the tethered crater explorer) rewritten for the Deploy Rover / Explore Rover design; re-run it to refresh the figures and `results/m4_summary.json`.
 
 ## Setup (one time)
 
@@ -49,23 +49,26 @@ Section A measures how much of the 5 m no-go is isolated specks before any train
 
 **Milestone 3 result (measured, held-out test areas):** the U-Net matches the tuned 20 m slope rule but does not beat it (no-go average precision on mostly drivable ground 0.525 vs 0.526). Per the plan's fallback, the proposal uses the rule-based map, and the 5 m map wherever it exists.
 
-## Milestone 4: Shackleton (Lantern Profile 1)
+## Milestone 4: Shackleton (tethered crater explorer)
 
-Open `04_shackleton.ipynb` and choose **Run > Run All Cells** (a few minutes; no new downloads). Using the 5 m map around Shackleton, it:
+Open `04_shackleton.ipynb` and choose **Run > Run All Cells** (about 5–10 minutes, estimated; no new downloads). Using the 5 m map around Shackleton, it:
 
 - checks the crater's measured diameter and depth against published values
-- finds the slope a rover must handle to drive from the rim to the floor, and how much floor a scout can reach at each slope limit
-- plans the tether route from the rim tower to the floor, preferring permanent shadow, with a 45° limit (T-REX tests)
-- places hubs by driving distance (farthest-point k-center) and measures the floor cable (minimum spanning tree)
-- checks laser line of sight from the tower to each hub, including the Moon's curvature
-- compares Lantern's placeholder numbers to the measured ones
+- finds the slope a rover must handle to drive from the rim to the floor (answer: about 32°, so the Explore Rover has to rappel), and how much floor a rover can drive at each slope limit
+- plans the tether route from the Deploy Rover (DR) site to the floor, preferring permanent shadow, with a 45° limit (T-REX tests)
+- tries about 60 Dock sites on the floor and picks the one the Explore Rover (ER) can reach the most floor from, by driving distance, using the reach values from `../concept-sizing`
+- measures the tether laid across the floor to that Dock, and the total tether length
+- checks ER-to-Dock radio line of sight across the reachable floor, including the Moon's curvature
+- compares the design doc's numbers to the measured ones
 
-The tower site is a placeholder (the highest rim point) until it is picked from NASA illumination maps.
+It writes a `design_inputs` block into `results/m4_summary.json`, which `../concept-sizing/sizing.py` reads.
+
+The DR site is a placeholder (the highest rim point) until it is picked from NASA illumination maps.
 
 ## Outputs
 
 - `figures/`: PNGs for each section (A–H)
-- `results/m1_summary.json`: every measured number, plus the threshold settings and their source labels
+- `results/m1_summary.json` … `m4_summary.json`: every measured number per milestone, plus the settings and their source labels
 
 ## Hazard thresholds
 

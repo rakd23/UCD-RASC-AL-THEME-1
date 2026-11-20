@@ -1,0 +1,235 @@
+{
+ "site_source": "built-in Shackleton values (Nov 2026 M4 run)",
+ "site": {
+  "route_km": 9.36,
+  "map_length_km": 8.18,
+  "drop_km": 4.36,
+  "max_slope": 41.2,
+  "shadow_frac": 0.686,
+  "floor_diam_km": 6.09,
+  "floor_area_km2": 29.1,
+  "floor_drivable": 0.847,
+  "floor_run_km": null,
+  "floor_in_reach_frac": null
+ },
+ "tether_length_km": 13.6,
+ "tether_trade": [
+  {
+   "P_del": 100,
+   "V": 300,
+   "I_A": 0.333,
+   "A_cond_mm2": 5.02,
+   "diam_mm": 8.16,
+   "g_per_m": 44.95,
+   "mass_kg": 611.1,
+   "spool_L": 1183.7,
+   "max_tension_N": 1039
+  },
+  {
+   "P_del": 150,
+   "V": 300,
+   "I_A": 0.5,
+   "A_cond_mm2": 7.53,
+   "diam_mm": 9.61,
+   "g_per_m": 62.59,
+   "mass_kg": 850.9,
+   "spool_L": 1644.9,
+   "max_tension_N": 1383
+  },
+  {
+   "P_del": 200,
+   "V": 300,
+   "I_A": 0.667,
+   "A_cond_mm2": 10.03,
+   "diam_mm": 10.85,
+   "g_per_m": 79.8,
+   "mass_kg": 1085.0,
+   "spool_L": 2094.9,
+   "max_tension_N": 1718
+  },
+  {
+   "P_del": 100,
+   "V": 600,
+   "I_A": 0.167,
+   "A_cond_mm2": 1.25,
+   "diam_mm": 4.97,
+   "g_per_m": 16.59,
+   "mass_kg": 225.6,
+   "spool_L": 438.8,
+   "max_tension_N": 487
+  },
+  {
+   "P_del": 150,
+   "V": 600,
+   "I_A": 0.25,
+   "A_cond_mm2": 1.88,
+   "diam_mm": 5.67,
+   "g_per_m": 21.65,
+   "mass_kg": 294.4,
+   "spool_L": 572.6,
+   "max_tension_N": 586
+  },
+  {
+   "P_del": 200,
+   "V": 600,
+   "I_A": 0.333,
+   "A_cond_mm2": 2.51,
+   "diam_mm": 6.27,
+   "g_per_m": 26.51,
+   "mass_kg": 360.5,
+   "spool_L": 700.5,
+   "max_tension_N": 680
+  },
+  {
+   "P_del": 100,
+   "V": 1000,
+   "I_A": 0.1,
+   "A_cond_mm2": 0.45,
+   "diam_mm": 3.73,
+   "g_per_m": 9.49,
+   "mass_kg": 129.0,
+   "spool_L": 248.0,
+   "max_tension_N": 349
+  },
+  {
+   "P_del": 150,
+   "V": 1000,
+   "I_A": 0.15,
+   "A_cond_mm2": 0.68,
+   "diam_mm": 4.14,
+   "g_per_m": 11.61,
+   "mass_kg": 157.9,
+   "spool_L": 305.6,
+   "max_tension_N": 390
+  },
+  {
+   "P_del": 200,
+   "V": 1000,
+   "I_A": 0.2,
+   "A_cond_mm2": 0.9,
+   "diam_mm": 4.49,
+   "g_per_m": 13.62,
+   "mass_kg": 185.1,
+   "spool_L": 359.4,
+   "max_tension_N": 429
+  }
+ ],
+ "tether_baseline": {
+  "P_del": 100,
+  "V": 1000,
+  "I_A": 0.1,
+  "A_cond_mm2": 0.45,
+  "diam_mm": 3.73,
+  "g_per_m": 9.49,
+  "mass_kg": 129.0,
+  "spool_L": 248.0,
+  "max_tension_N": 349
+ },
+ "climb_out_Wh": 928,
+ "er_range": [
+  {
+   "v": 0.05,
+   "case": "heaters",
+   "reach_m": 1285,
+   "drive_per_charge_m": 2569,
+   "non_driving_share": 0.97
+  },
+  {
+   "v": 0.05,
+   "case": "heater units",
+   "reach_m": 1694,
+   "drive_per_charge_m": 3388,
+   "non_driving_share": 0.96
+  },
+  {
+   "v": 0.1,
+   "case": "heaters",
+   "reach_m": 2486,
+   "drive_per_charge_m": 4972,
+   "non_driving_share": 0.94
+  },
+  {
+   "v": 0.1,
+   "case": "heater units",
+   "reach_m": 3244,
+   "drive_per_charge_m": 6488,
+   "non_driving_share": 0.92
+  },
+  {
+   "v": 0.15,
+   "case": "heaters",
+   "reach_m": 3611,
+   "drive_per_charge_m": 7223,
+   "non_driving_share": 0.91
+  },
+  {
+   "v": 0.15,
+   "case": "heater units",
+   "reach_m": 4668,
+   "drive_per_charge_m": 9337,
+   "non_driving_share": 0.88
+  },
+  {
+   "v": 0.2,
+   "case": "heaters",
+   "reach_m": 4668,
+   "drive_per_charge_m": 9337,
+   "non_driving_share": 0.88
+  },
+  {
+   "v": 0.2,
+   "case": "heater units",
+   "reach_m": 5981,
+   "drive_per_charge_m": 11962,
+   "non_driving_share": 0.84
+  }
+ ],
+ "floor_campaign": {
+  "reach_m": 2486,
+  "floor_in_reach_pct": 67,
+  "coverage_source": "straight-line estimate (run notebook 04 for the measured value)",
+  "transect_km": 66,
+  "sortie_h": 13.8,
+  "charge_h": 11.4,
+  "sorties": 26,
+  "floor_days": 28,
+  "tether_Wh_per_cycle": 2519,
+  "er_needs_Wh_per_cycle": 1959
+ },
+ "deploy_rover": {
+  "tether_input_W": 111,
+  "array_need_W": 199,
+  "array_W": 459,
+  "battery_kWh": 5.2,
+  "battery_kg": 35
+ },
+ "mass": {
+  "Deploy Rover": {
+   "current_kg": 237.0,
+   "with_growth_kg": 293.2
+  },
+  "Tether": {
+   "current_kg": 129.0,
+   "with_growth_kg": 154.8
+  },
+  "Explore Rover": {
+   "current_kg": 93.5,
+   "with_growth_kg": 114.3
+  },
+  "Dock": {
+   "current_kg": 22,
+   "with_growth_kg": 27.1
+  },
+  "TOTAL": {
+   "current_kg": 482,
+   "with_growth_kg": 589,
+   "with_15pct_system_margin": 678
+  }
+ },
+ "cost_musd": {
+  "low": 1309,
+  "high": 1937,
+  "delivery_low": 407,
+  "delivery_high": 610
+ }
+}
