@@ -1,6 +1,6 @@
 # Rover Comms: Antenna Angle and Line of Sight
 
-Works out where a small scout rover should point its antenna to reach a hub, relay beacon or the rim tower, and whether the terrain in between blocks the signal. Part of the Lantern concept for the Aggie Space Initiative NASA RASC-AL 2027 Theme 1 proposal.
+Works out where a small scout rover should point its antenna to reach a hub, relay beacon or the rim tower, and whether the terrain in between blocks the signal. concept for the Aggie Space Initiative NASA RASC-AL 2027 Theme 1 proposal.
 
 Two versions:
 
