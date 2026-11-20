@@ -32,3 +32,7 @@ NASA LOLA maps ──> lunar-hazard-map/ ──> results/m4_summary.json ──>
 3. `rover-comms`: run on any two points, e.g. an ER position and the Dock site from `m4_summary.json`.
 
 Data: NASA LRO LOLA products from NASA Goddard's PGDA (Barker et al. 2021, 2023; citations in each folder).
+
+## AI use
+
+Parts of this code were written with help from an AI tool.
